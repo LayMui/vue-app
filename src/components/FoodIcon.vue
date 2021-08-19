@@ -1,6 +1,8 @@
 <template>
   <div class="food-icon"
-    :title="tooltip">
+    :title="tooltip"
+    :style="{backgroundImage: `url('${this.image}')`}">
+    <img :src="image"/>
     <FavouriteWidget class="fav-widget"
     :initial_value='is_fav'
     v-on:toggle="toggle($event)"/>
@@ -25,6 +27,10 @@ export default {
         type: Boolean,
         default: false,
     },
+    image: {
+        type: String,
+        require: true
+    }
   },
   components: {
       FavouriteWidget
@@ -41,7 +47,6 @@ export default {
   }
 }
     
- 
 </script>
 
 

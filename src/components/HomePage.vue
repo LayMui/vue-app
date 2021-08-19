@@ -8,7 +8,7 @@
     class="food-icon" v-for="f in foods" :key="f.id"
     :name='f.name'
     :is_fav='f.is_fav'
-    :image='f.image'
+    :image='f.src'
     :description='f.description'
     :group='f.group' />
   </div>
@@ -30,28 +30,28 @@ export default {
             { id: 100, 
               name: 'apple', 
               description: 'red and crunchy', 
-              src: '../assets/apple.png', 
+              src: require('@/assets/apple.png'), 
               is_fav:false,
               group: 'fruits'
             },
             { id: 101, 
               name: 'banana', 
               description: 'yellow and soft', 
-              src: '../assets/banana.png', 
+              src: require('@/assets/banana.png'),
               is_fav:true,
               group: 'fruits'
               },
               { id: 102, 
                 name: 'orange', 
                 description: 'sweet and juicy', 
-                src: '../assets/orange.png', 
+                src: require('@/assets/orange.png'),
                 is_fav:true,
                 group: 'fruits'
                },
                { id: 103, 
                  name: 'chestnut', 
                  description: 'delightful soft', 
-                 src: '../assets/chestnuts.png', 
+                 src: require('@/assets/chestnuts.png'),
                  is_fav:true,
                  groups: 'fruits'},
         ]
