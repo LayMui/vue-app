@@ -1,9 +1,9 @@
 <template>
 <div class="food-app-wrapper-container">
 <nav>
-<a href="home">Home</a>
-<a href="fav"> Favourites</a>
-<a href="meals"> Meals</a>
+<router-link exact to="/">Home</router-link>
+<router-link exact :to="{ name: 'Favourite'}">Favourites</router-link>
+<router-link exact to="/about">About</router-link>
 </nav>
 <h1>{{title}}</h1>
 <h2>{{subtitle}}</h2>
@@ -28,6 +28,11 @@ export default {
 };
 
 <style scoped>
+
+.router-link-active {
+    background-color: 'green';
+    color: black
+}
 .food-app-wrapper-container {
 
     color: white;

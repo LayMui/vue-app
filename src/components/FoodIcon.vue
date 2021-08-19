@@ -62,14 +62,14 @@ export default {
           classes[`food-group`] = true; 
           classes[`food-group-${this.group}`] = true;
           return classes;
-      }
+      },
   }
 }
     
 </script>
 
 
-<style scoped lang="sass">
+<style scoped lang="scss">
 
 $food-group-highlight-border: 5px solid black;
 
@@ -109,7 +109,8 @@ $food-group-highlight-border: 5px solid black;
 }
 
 .food-group-vegetables {
-    border-left: 5px solid green;
+    border-left: $food-group-highlight-border;
+    border-left:  green;
 }
 
 </style>
