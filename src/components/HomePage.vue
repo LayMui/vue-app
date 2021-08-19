@@ -66,4 +66,15 @@ export default {
 </script>
 
 <style scoped>
+.food-items .food-icon {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 200px;
+    height: 200px;
+    border: 1px solid grey;
+    background-image: url('../assets/placeholder.png');
+    margin: 0px 10px;
+}
+
 </style>

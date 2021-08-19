@@ -1,5 +1,6 @@
 <template>
-  <div class="food-icon">
+  <div class="food-icon"
+    :title="tooltip">
     <FavouriteWidget class="fav-widget"
     :initial_value='is_fav'
     v-on:toggle="toggle($event)"/>
@@ -33,6 +34,11 @@ export default {
           console.log(value);
       }
   },
+  computed: {
+      tooltip() {
+          return `${this.name} - ${this.description || 'no description provided'}`
+      }
+  }
 }
     
  
@@ -42,11 +48,13 @@ export default {
 <style scoped>
 .food-icon {
     display: flex;
-    align-items: flex-end;
-    width: 800px;
-    height: 700px;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 200px;
+    height: 200px;
     border: 1px solid grey;
-    background-image: url('')
+    background-image: url('../assets/placeholder.png');
+    margin: 0px 10px;
 }
 
 .fav-widget {
