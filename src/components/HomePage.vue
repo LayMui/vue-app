@@ -1,9 +1,16 @@
 <template>
   <div class=food-homepage-container>
-  <h1>The Food App</h1>
-  <p>Find out all about different foods and put together your favourite meal here!</p>
-  <div class=food-items>
-  <FoodIcon :name='foods[3].name'/>
+  <FoodAppPageWrapper :title="title" :subtitle="description"></FoodAppPageWrapper>
+  <h1>{{title}}</h1>
+  <p>{{description}}</p>
+  <div class="food-items">
+  <FoodIcon 
+    class="food-icon" v-for="f in foods" :key="f.id"
+    :name='f.name'
+    :is_fav='f.is_fav'
+    :image='f.image'
+    :description='f.description'
+    :group='f.group' />
   </div>
   </div>
 </template>
@@ -11,6 +18,7 @@
 <script>
 
 import FoodIcon from './FoodIcon.vue';
+import FoodAppPageWrapper from './PageWrapper.vue';
 
 export default {
     name: 'HomePage', 
@@ -19,16 +27,40 @@ export default {
             title: 'The Food App',
             description: 'Find out all about different food and put together your fav. meals',
              foods: [
-            { name: 'apple', description: 'red and crunchy', src: '../assets/apple.png', percent_carbs: 96, is_fav:false},
-            { name: 'banana', description: 'yellow and soft', src: '../assets/banana.png', percent_carbs: 93, is_fav:true},
-            { name: 'orange', description: 'sweet and juicy', src: '../assets/orange.png', percent_carbs: 53, is_fav:true},
-            { name: 'chestnut', description: 'delightful soft', src: '../assets/chestnuts.png', percent_carbs: 72, is_fav:true},
+            { id: 100, 
+              name: 'apple', 
+              description: 'red and crunchy', 
+              src: '../assets/apple.png', 
+              is_fav:false,
+              group: 'fruits'
+            },
+            { id: 101, 
+              name: 'banana', 
+              description: 'yellow and soft', 
+              src: '../assets/banana.png', 
+              is_fav:true,
+              group: 'fruits'
+              },
+              { id: 102, 
+                name: 'orange', 
+                description: 'sweet and juicy', 
+                src: '../assets/orange.png', 
+                is_fav:true,
+                group: 'fruits'
+               },
+               { id: 103, 
+                 name: 'chestnut', 
+                 description: 'delightful soft', 
+                 src: '../assets/chestnuts.png', 
+                 is_fav:true,
+                 groups: 'fruits'},
         ]
            
         }
     },
     components: {
-        FoodIcon
+        FoodIcon,
+        FoodAppPageWrapper
     }
 };
 </script>
