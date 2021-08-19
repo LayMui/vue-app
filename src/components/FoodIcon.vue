@@ -1,7 +1,8 @@
 <template>
   <div class="food-icon"
     :title="tooltip"
-    :style="{backgroundImage: `url('${this.image}')`}">
+    :style="generatedFoodIconStyle"
+    :class="generatedFoodIconClasses">
     <img :src="image"/>
     <FavouriteWidget class="fav-widget"
     :initial_value='is_fav'
@@ -27,6 +28,13 @@ export default {
         type: Boolean,
         default: false,
     },
+    description: {
+        type: String,
+    },
+    group: {
+        type: String,
+        validator(group) {return ['fruits', 'vegetables', 'grains', 'meats', 'dairy'].indexOf(group) !== -1;}
+    },
     image: {
         type: String,
         require: true
@@ -43,6 +51,17 @@ export default {
   computed: {
       tooltip() {
           return `${this.name} - ${this.description || 'no description provided'}`
+      },
+      generatedFoodIconStyle() {
+          return {
+              backgroundImage: `url('${this.image}')`
+          };
+      },
+      generateFoodIconClasses() {
+          const classes = {};
+          classes[`food-group`] = true; 
+          classes[`food-group-${this.group}`] = true;
+          return classes;
       }
   }
 }
@@ -50,7 +69,10 @@ export default {
 </script>
 
 
-<style scoped>
+<style scoped lang="sass">
+
+$food-group-highlight-border: 5px solid black;
+
 .food-icon {
     display: flex;
     flex-direction: column;
@@ -76,4 +98,18 @@ export default {
     background-color: rgba(0,0,0,0.5);
     width: 100%
 }
+
+.food-group {
+    box-shadow: 5px 5px white;
+}
+
+.food-group-fruits {
+    border-left: $food-group-highlight-border;
+    border-color: red;
+}
+
+.food-group-vegetables {
+    border-left: 5px solid green;
+}
+
 </style>

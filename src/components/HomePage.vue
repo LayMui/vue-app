@@ -73,7 +73,7 @@ export default {
     width: 200px;
     height: 200px;
     border: 1px solid grey;
-    background-image: url('../assets/placeholder.png');
+    background-image: require('@/assets/placeholder.png');
     margin: 0px 10px;
 }
 
